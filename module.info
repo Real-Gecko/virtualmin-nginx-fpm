@@ -1,0 +1,3 @@
+desc=Add Nginx and PHP-FPM for domains
+version=1.0
+hidden=1

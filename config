@@ -1,0 +1,11 @@
+nginx_config=/usr/local/nginx/conf/nginx.conf
+nginx_cmd=/usr/local/nginx/sbin/nginx
+nginx_start_cmd=/usr/local/nginx/sbin/nginx >/dev/null 2>&1 </dev/null &
+nginx_stop_cmd=killall nginx
+nginx_reload_cmd=killall nginx ; sleep 1 ; /usr/local/nginx/sbin/nginx >/dev/null 2>&1 </dev/null &
+nginx_user=www-data
+fpm_cmd=/usr/sbin/php5-fpm
+fpm_start=service php5-fpm start
+fpm_stop=service php5-fpm stop
+fpm_reload=service php5-fpm restart
+fpm_poold=/etc/php5/fpm/pool.d
