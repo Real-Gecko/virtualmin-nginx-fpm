@@ -1,3 +1,4 @@
-desc=Add Nginx and PHP-FPM for domains
+desc=Nginx PHP-FPM website
+os_support=debian-linux redhat-linux
 version=1.0
 hidden=1

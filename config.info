@@ -1,6 +1,6 @@
 nginx_config=Full path to Nginx config file,0
-nginx_sites_available=File or directory for new virtual hosts (sites-available),3,None (add to main config file)
-nginx_sites_enabled=Directory for links to new virtual host files (sites-enabled),3,None
+nginx_sites_available=Directory for new virtual hosts (sites-available)
+nginx_sites_enabled=Directory for links to new virtual hosts (sites-enabled),3,None
 nginx_cmd=Full path to Nginx command,0
 nginx_start_cmd=Command to start Nginx,0
 nginx_stop_cmd=Command to stop Nginx,0
