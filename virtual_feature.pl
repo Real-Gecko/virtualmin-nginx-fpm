@@ -102,6 +102,7 @@ sub feature_modify {
     my ($d, $oldd) = @_;
 #    if ($d->{'dom'} ne $oldd->{'dom'}) {
         &$virtual_server::first_print($text{'feat_modify_domain'});
+        %conf = get_fpm_config($d);
         &unlink_file(
             "$config{'nginx_sites_available'}/$d->{'dom'}.conf",
             "$config{'fpm_poold'}/$d->{'dom'}.conf"
@@ -112,7 +113,6 @@ sub feature_modify {
             );
         }
         &create_nginx_config($d);
-        %conf = get_fpm_config($d);
         &create_fpm_pool($d, \%conf);
         &reload_services;
         &$virtual_server::second_print($virtual_server::text{'setup_done'});
@@ -262,7 +262,7 @@ sub feature_get_web_suexec {
 }
 
 sub feature_inputs_show {
-    return 1;
+    return 0;
 }
 =begin
 sub feature_inputs {

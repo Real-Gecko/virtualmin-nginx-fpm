@@ -32,3 +32,5 @@ fpm_pm_max_spare_servers=The desired maximum number of idle processes
 fpm_pm_max_requests=The number of requests each child process should execute before respawning
 save=Save
 nginx_ssl=Enable SSL
+error_max_children=ERROR! Min spare servers and max spare servers cannot be greater than max children, check your config!
+previous_page=previous page

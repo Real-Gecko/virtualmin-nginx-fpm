@@ -1,0 +1,7 @@
+-- Version 1.1 --
+Fixed PHP-FPM configuration break during domain modification leading to PHP-FPM crash
+Added check for 'pm.max_spare_servers' and 'pm.min_spare_servers' are not greater than 'pm.max_children' to avoid PHP-FPM crash
+Added wbm.gz for ease of installation
+
+-- Version 1.0 --
+Initial release
