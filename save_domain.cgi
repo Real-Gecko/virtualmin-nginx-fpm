@@ -12,6 +12,15 @@ if(($in{'fpm_pm_max_spare_servers'} > $in{'fpm_pm_max_children'}) or ($in{'fpm_p
     &ui_print_header(undef, $module_info{'desc'}, "", undef, 1, 1);
     print("<h4>$text{'error_max_children'}</h4>");
     &ui_print_footer('javascript:history.back()', $text{'previous_page'});
+} elsif (
+        !($in{'fpm_pm_max_children'} eq int($in{'fpm_pm_max_children'})) or
+        !($in{'fpm_pm_start_servers'} eq int($in{'fpm_pm_start_servers'})) or
+        !($in{'fpm_pm_min_spare_servers'} eq int($in{'fpm_pm_min_spare_servers'})) or
+        !($in{'fpm_pm_max_spare_servers'} eq int($in{'fpm_pm_max_spare_servers'})) or
+        !($in{'fpm_pm_max_requests'} eq int($in{'fpm_pm_max_requests'}))
+    ) {
+    print("<h4>$text{'error_invalid_numeric'}</h4>");
+    &ui_print_footer('javascript:history.back()', $text{'previous_page'});    
 } else {
     $d->{'ssl'} = $in{'ssl'} ? 1 : 0;
     &virtual_server::save_domain($d);

@@ -33,4 +33,5 @@ fpm_pm_max_requests=The number of requests each child process should execute bef
 save=Save
 nginx_ssl=Enable SSL
 error_max_children=ERROR! Min spare servers and max spare servers cannot be greater than max children, check your config!
+error_invalid_numeric=ERROR! Invalid numeric values supllied in parameters!
 previous_page=previous page

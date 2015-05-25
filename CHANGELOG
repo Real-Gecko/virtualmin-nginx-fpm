@@ -1,7 +1,14 @@
--- Version 1.1 --
+-- Version 1.0.2
+SSL setup for Nginx changed: if one enables SSL, then permanent redirect done from HTTP port 80 to HTTPS port 443.
+SSL certificate taken correctly from $domain hash.
+Check FPM config numeric values to be really numeric ... just in case :)
+Nginx TLS versions limited to 1.1 and 1.2 to prevent protocol downgrade attacks leading to vurnerabilities such as "poodle".
+Added deb file for more flexible package distribution in addition to Webmin's wbm.gz.
+ 
+-- Version 1.0.1 --
 Fixed PHP-FPM configuration break during domain modification leading to PHP-FPM crash
 Added check for 'pm.max_spare_servers' and 'pm.min_spare_servers' are not greater than 'pm.max_children' to avoid PHP-FPM crash
 Added wbm.gz for ease of installation
 
 -- Version 1.0 --
-Initial release
+Initial release - buggy, your FPM may crash due to misconfig.

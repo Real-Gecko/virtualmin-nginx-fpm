@@ -15,6 +15,11 @@ print &ui_post_header("$in{'dom'}");
 
 %conf = get_fpm_config($d);
 
+#use Data::Dumper;
+#print('<pre>');
+#print Dumper($d);
+#print('</pre>');
+
 print &ui_form_start("save_domain.cgi", "post");
 print &ui_hidden("dom", $in{'dom'}),"\n";
 print &ui_table_start($text{'nginx_fpm_config'},  "style='width: 100%;'", 2);

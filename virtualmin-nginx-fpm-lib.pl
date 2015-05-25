@@ -18,10 +18,33 @@ sub get_fpm_config {
 sub create_nginx_config {
     my ($d) = @_;
     open(FILE, ">> $config{'nginx_sites_available'}/$d->{'dom'}.conf") or die ("Unable to create nginx config");
+
+if ($d->{'ssl'}) {
 print FILE <<"NGINX";
 server {
     server_name $d->{'dom'} www.$d->{'dom'};
     listen $d->{'ip'};
+    rewrite ^ https://\$server_name\$request_uri? permanent;
+}
+
+server {
+    server_name $d->{'dom'} www.$d->{'dom'};
+    listen $d->{'ip'}:443 ssl;
+    ssl_certificate $d->{'ssl_cert'};
+    ssl_certificate_key $d->{'ssl_key'};
+    ssl_protocols TLSv1.1 TLSv1.2;
+
+NGINX
+} else {
+print FILE <<"NGINX";
+server {
+    server_name $d->{'dom'} www.$d->{'dom'};
+    listen $d->{'ip'};
+
+NGINX
+}
+
+print FILE <<"NGINX";
     root $d->{'home'}/public_html;
     index index.html index.htm index.php;
     access_log /var/log/nginx/$d->{'dom'}_access_log;
@@ -54,15 +77,8 @@ server {
         try_files \$uri =404;
         fastcgi_pass unix:/var/run/php5-fpm-$d->{'dom'}.sock;
     }
-NGINX
-if ($d->{'ssl'}) {
-print FILE <<"NGINX";
-    listen $d->{'ip'}:443 ssl;
-    ssl_certificate $d->{'home'}/ssl.cert;
-    ssl_certificate_key $d->{'home'}/ssl.key;
-NGINX
 }
-print FILE "}";
+NGINX
 
     close(FILE);
     if($config{'nginx_sites_enabled'}) {
