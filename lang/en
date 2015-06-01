@@ -1,5 +1,5 @@
 feat_name=Nginx PHP-FPM website
-feat_label=Enable Nginx PHP-FPM website
+feat_label=Enable Nginx PHP-FPM website?
 feat_req_nginx=Nginx required by this plugin is not installed
 feat_req_fpm=PHP-FPM required by this plugin is not installed
 feat_loosing=Nginx PHP-FPM website for this virtual server will be disabled
@@ -34,4 +34,5 @@ save=Save
 nginx_ssl=Enable SSL
 error_max_children=ERROR! Min spare servers and max spare servers cannot be greater than max children, check your config!
 error_invalid_numeric=ERROR! Invalid numeric values supllied in parameters!
+feat_ephpmode=ERROR! Invalid PHP mode selected!
 previous_page=previous page

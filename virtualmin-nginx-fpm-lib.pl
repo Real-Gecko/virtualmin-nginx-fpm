@@ -114,6 +114,7 @@ env[TMPDIR] = $d->{'home'}/.tmp
 env[TEMP] = $d->{'home'}/.tmp
 php_admin_value[cgi.fix_pathinfo] = 0
 php_admin_value[open_basedir] = $d->{'home'}/public_html/:$d->{'home'}/.tmp/
+php_admin_value[session.save_path] = $d->{'home'}/.tmp/
 FPM
     close(FILE);
 }
@@ -122,5 +123,19 @@ sub reload_services {
     system("$config{'nginx_reload_cmd'} >/dev/null 2>&1");
     system("$config{'fpm_reload'} >/dev/null 2>&1");
 }
+
+# get_default_php_version()
+# Returns the PHP version number and binary path for the best PHP installed
+# Taken from virtualmin-nginx module
+sub get_default_php_version
+{
+    my @vers = sort { $a->[0] <=> $b->[0] }
+                    &virtual_server::list_available_php_versions(undef, "fcgid");
+    @vers || return ( );
+    my $cmd = $vers[0]->[1];
+    $cmd || return ( );
+    return @{$vers[0]};
+}
+
 1;
 

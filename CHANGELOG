@@ -1,3 +1,8 @@
+-- Version 1.0.3
+Added install scripts support.
+PHP session.save_path is now defaults to "$HOME/.tmp/".
+Fixed feature_get_web_ssl_file to take values from $domain hash.
+
 -- Version 1.0.2
 SSL setup for Nginx changed: if one enables SSL, then permanent redirect done from HTTP port 80 to HTTPS port 443.
 SSL certificate taken correctly from $domain hash.

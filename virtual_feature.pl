@@ -225,10 +225,10 @@ sub feature_provides_ssl {
 sub feature_get_web_ssl_file {
     my ($d, $mode) = @_;
     if ($mode eq 'cert') {
-            return "$d->{'home'}/ssl.cert";
+            return $d->{'ssl_cert'};
         }
     elsif ($mode eq 'key') {
-            return "$d->{'home'}/ssl.key";
+            return $d->{'ssl_key'};
         }
     elsif ($mode eq 'ca') {
             # Always appeneded to the cert file
@@ -243,6 +243,34 @@ sub feature_web_supports_suexec {
 
 sub feature_web_supports_cgi {
     return 1;
+}
+
+sub feature_web_supported_php_modes
+{
+    return ('cgi');
+}
+
+sub feature_get_web_php_mode
+{
+    return 'cgi';
+}
+
+sub feature_save_web_php_mode
+{
+    my ($d, $mode) = @_;
+    $mode eq 'cgi' || &error($text{'feat_ephpmode'});
+}
+
+# feature_list_web_php_directories(&domain)
+# Only one version is supported in Nginx
+# Taken form virtualmin-nginx
+sub feature_list_web_php_directories
+{
+    my ($d) = @_;
+    my ($defver) = &get_default_php_version();
+    return ( { 'dir' => &virtual_server::public_html_dir($d),
+          'mode' => 'cgi',
+          'version' => $defver } );
 }
 
 sub feature_restart_web_php {
@@ -294,4 +322,9 @@ sub feature_start_service {
 sub feature_stop_service {
     system("$config{'nginx_stop_cmd'} >/dev/null 2>&1");
     system("$config{'fpm_stop'} >/dev/null 2>&1");
+}
+
+sub feature_hlink
+{
+    return "index";
 }
