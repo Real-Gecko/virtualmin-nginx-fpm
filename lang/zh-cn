@@ -35,4 +35,4 @@ nginx_ssl=启用SSL
 error_max_children=错误! 最小空子进程和最大空闲进程数量不能超过总共最大子进程数量, 请检查你的设置!
 error_invalid_numeric=错误! 参数中指定的数值无效!
 feat_ephpmode=错误! 选择了无效的php模式!
-previous_page=上一页 
+previous_page=上一页
