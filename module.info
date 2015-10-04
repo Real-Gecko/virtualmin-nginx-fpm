@@ -1,5 +1,5 @@
 desc=Nginx PHP-FPM website
 os_support=debian-linux redhat-linux
-version=1.0.3
+version=1.0.4
 hidden=1
 desc_ru.UTF-8=

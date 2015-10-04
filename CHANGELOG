@@ -1,3 +1,6 @@
+-- Version 1.0.4
+Chinese translation by https://github.com/cystc2008 added.
+
 -- Version 1.0.3
 Added install scripts support.
 PHP session.save_path is now defaults to "$HOME/.tmp/".
