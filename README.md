@@ -1,3 +1,7 @@
+### Virtualmin now have [native FPM support](https://www.virtualmin.com/project/issues?text=php-fpm&projects=&status=Open&categories=All&order=created&sort=desc).
+### As soon as official FPM support will become 100% workable I'll drop support of this module.
+
+
 Virtualmin plugin for creating websites served by Nginx through PHP-FPM
 Can be downloaded from install directory.
 
